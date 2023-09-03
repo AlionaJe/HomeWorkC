@@ -14,42 +14,44 @@ void FillArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
         for (int j = 0; j < array.GetLength(1); j++)
-            array[i,j] = new Random().Next(0,10);
+            array[i, j] = new Random().Next(0, 10);
 }
 
 void PrintArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
-        {
+    {
         for (int j = 0; j < array.GetLength(1); j++)
-            Console.Write($"{array[i,j],3}    ");
-        Console.WriteLine();
+        {
+            Console.Write($"{array[i, j],3}    ");
         }
+        Console.WriteLine();
+    }
 }
 
 int[] SumRowsArray(int[,] array, int rows)
 {
-    int [] summaRows = new int[rows];
+    int[] summRows = new int[rows];
     for (int i = 0; i < array.GetLength(0); i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            int sum = 0;
-            for (int j = 0; j < array.GetLength(1); j++)
-            {
             sum = sum + array[i, j];
-            }
-        summaRows [i] = sum;
         }
-    return summaRows;
+        summRows[i] = sum;
+    }
+    return summRows;
 }
 
 int MinRows(int[] SumRows)
 {
     int iMin = 0;
-    for (int i = 0; i < SumRows.Length-1; i++)
+    for (int i = 0; i < SumRows.Length - 1; i++)
     {
-        for (int j = i+1; j < SumRows.Length; j++)
+        for (int j = i + 1; j < SumRows.Length; j++)
         {
-            if (SumRows[j]<SumRows[iMin])
+            if (SumRows[j] < SumRows[iMin])
                 iMin = j;
         }
     }
@@ -64,7 +66,7 @@ int rows = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите количество столбцов: ");
 int cols = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine();
-int[,] array = new int [rows, cols];
+int[,] array = new int[rows, cols];
 FillArray(array);
 PrintArray(array);
 int[] SumRows = SumRowsArray(array, rows);
