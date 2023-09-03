@@ -54,9 +54,9 @@ void PrintArray(int[,] array)
 }
 
 Console.Clear();
-System.Console.Write("Введите количество строк: ");
+Console.Write("Введите количество строк: ");
 int rows = Convert.ToInt32(Console.ReadLine());
-System.Console.Write("Введите количество столбцов: ");
+Console.Write("Введите количество столбцов: ");
 int cols = Convert.ToInt32(Console.ReadLine());
 int[,] array = new int [rows, cols];
 FillArrayRandom(array);
